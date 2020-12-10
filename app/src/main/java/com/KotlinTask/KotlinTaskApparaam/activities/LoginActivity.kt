@@ -46,22 +46,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(R.layout.activity_login)
 
-        // hiding the action bar
-     supportActionBar!!.hide()
-
-        // initializing the views
+        
+        supportActionBar!!.hide()
         initViews()
-
-        // initializing the listeners
         initListeners()
-
-        // initializing the objects
         initObjects()
     }
 
-    /**
-     * This method is to initialize views
-     */
+    
     private fun initViews() {
 
         nestedScrollView = findViewById<View>(R.id.nestedScrollView) as NestedScrollView
@@ -79,9 +71,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    /**
-     * This method is to initialize listeners
-     */
+    
     private fun initListeners() {
 
         appCompatButtonLogin!!.setOnClickListener(this)
@@ -89,9 +79,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         appCompatImageView!!.setOnClickListener(this)
     }
 
-    /**
-     * This method is to initialize objects to be used
-     */
+   //This method is to initialize objects to be used
+     
     private fun initObjects() {
 
         databaseHelper = DatabaseHelper(activity)
@@ -99,10 +88,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    /**
-     * This implemented method is to listen the click on view
-     *
-     */
+    
     override fun onClick(v: View) {
         when (v.id) {
             R.id.appCompatButtonLogin -> verifyFromSQLite()
@@ -121,9 +107,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * This method is to validate the input text fields and verify login credentials from SQLite
-     */
+   //validate the input text fields and verify login credentials from SQLite
+    
     private fun verifyFromSQLite() {
 
         if (!inputValidation!!.isInputEditTextFilled(textInputEditTextEmail!!, textInputLayoutEmail!!, getString(R.string.error_message_email))) {
@@ -152,9 +137,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * This method is to empty all input edit text
-     */
+    
+    //This method is to empty all input edit text
+     
     private fun emptyInputEditText() {
         textInputEditTextEmail!!.text = null
         textInputEditTextPassword!!.text = null
