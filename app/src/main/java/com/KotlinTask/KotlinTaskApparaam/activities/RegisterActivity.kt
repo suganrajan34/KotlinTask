@@ -43,22 +43,16 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(R.layout.activity_register)
 
-        // hiding the action bar
+     
       supportActionBar!!.hide()
 
-        // initializing the views
         initViews()
-
-        // initializing the listeners
         initListeners()
 
-        // initializing the objects
         initObjects()
     }
 
-    /**
-     * This method is to initialize views
-     */
+   
     private fun initViews() {
         nestedScrollView = findViewById<View>(R.id.nestedScrollView) as NestedScrollView
 
@@ -78,18 +72,13 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    /**
-     * This method is to initialize listeners
-     */
+
     private fun initListeners() {
         appCompatButtonRegister!!.setOnClickListener(this)
         appCompatTextViewLoginLink!!.setOnClickListener(this)
 
     }
 
-    /**
-     * This method is to initialize objects to be used
-     */
     private fun initObjects() {
         inputValidation = InputValidation(activity)
         databaseHelper = DatabaseHelper(activity)
@@ -97,10 +86,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-
-    /**
-     * This implemented method is to listen the click on view
-     */
     override fun onClick(v: View) {
         when (v.id) {
 
@@ -110,9 +95,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * This method is to validate the input text fields and post data to SQLite
-     */
+  
     private fun postDataToSQLite() {
         if (!inputValidation!!.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
             return
