@@ -34,11 +34,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     }
 
-    /**
-     * This method is to fetch all user and return the list of user records
-     *
-     * @return list
-     */
     fun getAllUser(): List<User> {
 
         // array of columns to fetch
@@ -51,13 +46,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val db = this.readableDatabase
 
         // query the user table
-        val cursor = db.query(TABLE_USER, //Table to query
-                columns,            //columns to return
-                null,     //columns for the WHERE clause
-                null,  //The values for the WHERE clause
-                null,      //group the rows
-                null,       //filter by row groups
-                sortOrder)         //The sort order
+        val cursor = db.query(TABLE_USER,
+                columns,           
+                null,     
+                null, 
+                null,      
+                null,       
+                sortOrder)         
         if (cursor.moveToFirst()) {
             do {
                 val user = User(id = cursor.getString(cursor.getColumnIndex(COLUMN_USER_ID)).toInt(),
@@ -74,11 +69,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
 
-    /**
-     * This method is to create user record
-     *
-     * @param user
-     */
+   
     fun addUser(user: User) {
         val db = this.writableDatabase
 
@@ -92,11 +83,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
     }
 
-    /**
-     * This method to update user record
-     *
-     * @param user
-     */
+   
     fun updateUser(user: User) {
         val db = this.writableDatabase
 
@@ -111,11 +98,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
     }
 
-    /**
-     * This method is to delete user record
-     *
-     * @param user
-     */
+    
     fun deleteUser(user: User) {
 
         val db = this.writableDatabase
@@ -127,12 +110,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     }
 
-    /**
-     * This method to check user exist or not
-     *
-     * @param email
-     * @return true/false
-     */
+    
     fun checkUser(email: String): Boolean {
 
         // array of columns to fetch
@@ -146,18 +124,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val selectionArgs = arrayOf(email)
 
         // query user table with condition
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com';
-         */
-        val cursor = db.query(TABLE_USER, //Table to query
-                columns,        //columns to return
-                selection,      //columns for the WHERE clause
-                selectionArgs,  //The values for the WHERE clause
-                null,  //group the rows
-                null,   //filter by row groups
-                null)  //The sort order
+       
+        val cursor = db.query(TABLE_USER, 
+                columns,       
+                selection,     
+                selectionArgs,  
+                null,  
+                null,   
+                null)  
 
 
         val cursorCount = cursor.count
@@ -171,13 +145,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return false
     }
 
-    /**
-     * This method to check user exist or not
-     *
-     * @param email
-     * @param password
-     * @return true/false
-     */
+    
     fun checkUser(email: String, password: String): Boolean {
 
         // array of columns to fetch
@@ -191,19 +159,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         // selection arguments
         val selectionArgs = arrayOf(email, password)
 
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
-         */
-        val cursor = db.query(TABLE_USER, //Table to query
-                columns, //columns to return
-                selection, //columns for the WHERE clause
-                selectionArgs, //The values for the WHERE clause
-                null,  //group the rows
-                null, //filter by row groups
-                null) //The sort order
+        val cursor = db.query(TABLE_USER, 
+                columns, 
+                selection, 
+                selectionArgs, 
+                null,  
+                null, 
+                null) 
 
         val cursorCount = cursor.count
         cursor.close()
