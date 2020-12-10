@@ -137,10 +137,8 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
 
     }
-
-    /**
-     * This method is to empty all input edit text
-     */
+//This method is to empty all input edit text
+     
     private fun emptyInputEditText() {
         textInputEditTextName!!.text = null
         textInputEditTextEmail!!.text = null
